@@ -24,11 +24,11 @@ check("Tavily search", lambda: f"{len(seo_research.tavily_search('email marketin
 print("\n--- Deliberately bad keys (expect InvalidKeyError messages) ---")
 real_g, real_t = config.GEMINI_API_KEY, config.TAVILY_API_KEY
 
-config.GEMINI_API_KEY = "AIzaBadKeyForTesting000000000000000000"
+config.GEMINI_API_KEY = ""
 llm._client = None
 check("Gemini bad key", lambda: llm.ask("hi", max_tokens=20))
 
-config.TAVILY_API_KEY = "tvly-badkeyfortesting0000000000"
+config.TAVILY_API_KEY = ""
 seo_research._tavily = None
 check("Tavily bad key", lambda: seo_research.tavily_search("test", 1))
 
